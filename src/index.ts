@@ -1,30 +1,3 @@
-# TypeScript Manual
-
-## Table of Contens
-  - [Basic Types](#basic-types)
-  - Variable Declarations
-  - Interfaces
-  - Classes
-  - Functions
-  - Generics
-  - Enums
-  - Type Inference
-  - Type Compatibility
-  - Advanced Types
-  - Symbols
-  - Iterators and Generatorss
-  - Modules
-  - Namespaces
-  - Namespaces and Modules
-  - Module resolution
-  - Declaration Merging
-  - JSX
-  - Decorators
-  - Mixins
-  - Triple-Slash Directives
-
-## Basic Types
-```javascript
 // string
 let myName: string = 'Yo'
 console.log(myName)
@@ -128,4 +101,3 @@ let canBeNull: number | null = 12
 canBeNull = null
 let canAlsoBeNull
 canAlsoBeNull = null
-```
