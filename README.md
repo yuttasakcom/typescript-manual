@@ -1,5 +1,4 @@
-## TypeScript Manual
-> คู่มือการใช้งาน TypeScript
+# TypeScript Manual
 
 ## Table of Contens
   - Basic Types
