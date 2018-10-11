@@ -38,7 +38,7 @@ console.log(car)
 
 // function
 function returnMyName(): string {
-  return myName
+  return 'YoYea'
 }
 
 // void
