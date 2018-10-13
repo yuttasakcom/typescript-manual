@@ -8,7 +8,7 @@
 - [Namespaces](#namespaces)
 - [Modules](#modules)
 - [Interfaces](#interfaces)
-- Generics
+- [Generics](#generics)
 - Type Inference
 - Type Compatibility
 - Advanced Types
@@ -264,7 +264,7 @@ namespace MyNamescpace {
 
 console.log(MyNamescpace.message('Hello'))
 
-# imports
+// imports
 /// <reference path="tsfile.ts" />
 ```
 
@@ -273,12 +273,12 @@ console.log(MyNamescpace.message('Hello'))
 > npm install --save systemjs@
 
 ```typescript
-# in file
+// in file
 export function message(msg: string) {
   return msg
 }
 
-# call
+// call
 import { message } from './file'
 ```
 
@@ -294,5 +294,50 @@ interface Person {
 
 interface AgePerson extends Person {
   age: number
+}
+```
+
+## Generics
+
+```typescript
+function echo<T>(data: T) {
+  return data
+}
+
+console.log(echo<string>('Hello'))
+
+const arr: Array<number> = [1, 2, 3]
+
+function printAll<T>(args: T[]) {
+  args.forEach(e => console.log(e))
+}
+
+printAll<string>(['Apple', 'Banana'])
+
+// Generic Types
+const echo2: <T>(data: T) => T = echo
+console.log(echo2<string>('Hello'))
+
+// Generic Class
+class MyMap<T> {
+  private map: {[key: string]: T} = {}
+
+  setItem(key: string, item: T) {
+    this.map[key] = item
+  }
+
+  getItem(key: string) {
+    return this.map[key]
+  }
+
+  clear() {
+    this.map = {}
+  }
+
+  printMap() {
+    for (let key in this.map) {
+      console.log(key, this.map[key])
+    }
+  }
 }
 ```
