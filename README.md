@@ -283,3 +283,16 @@ import { message } from './file'
 ```
 
 ## Interfaces
+
+```typescript
+interface Person {
+  firstName: string
+  age?: number
+  [propName: string]: any
+  greet(msg: string): void
+}
+
+interface AgePerson extends Person {
+  age: number
+}
+```
