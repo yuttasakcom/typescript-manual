@@ -5,16 +5,15 @@
 - [Setup](#setup)
 - [Basic Types](#basic-types)
 - [Classes](#classes)
-- Interfaces
+- [Namespaces](#namespaces)
+- [Modules](#modules)
+- [Interfaces](#interfaces)
 - Generics
 - Type Inference
 - Type Compatibility
 - Advanced Types
 - Symbols
 - Iterators and Generatorss
-- Modules
-- Namespaces
-- Namespaces and Modules
 - Module resolution
 - Declaration Merging
 - JSX
@@ -253,3 +252,34 @@ let right = OnlyOne.getInstance()
 console.log(right.name)
 // right.name = 'Something else'
 ```
+
+## Namespaces
+
+```typescript
+namespace MyNamescpace {
+  export function message(msg: string) {
+    return msg
+  }
+}
+
+console.log(MyNamescpace.message('Hello'))
+
+# imports
+/// <reference path="tsfile.ts" />
+```
+
+## Modules
+
+> npm install --save systemjs@
+
+```typescript
+# in file
+export function message(msg: string) {
+  return msg
+}
+
+# call
+import { message } from './file'
+```
+
+## Interfaces
