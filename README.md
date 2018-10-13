@@ -27,7 +27,6 @@
 ```
 $ sudo npm install -g typescript
 
-
 # genarate tsconfig.json
 $ tsc --init
 ```
