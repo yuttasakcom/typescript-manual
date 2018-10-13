@@ -2,7 +2,7 @@
 
 ## Table of Contens
 
-- [Setup]#setup
+- [Setup](#setup)
 - [Basic Types](#basic-types)
 - [Classes](#classes)
 - Interfaces
