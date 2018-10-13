@@ -9,17 +9,7 @@
 - [Modules](#modules)
 - [Interfaces](#interfaces)
 - [Generics](#generics)
-- Type Inference
-- Type Compatibility
-- Advanced Types
-- Symbols
-- Iterators and Generatorss
-- Module resolution
-- Declaration Merging
-- JSX
-- Decorators
-- Mixins
-- Triple-Slash Directives
+- [Decorators](#decorators)
 
 ## Setup
 
@@ -320,7 +310,7 @@ console.log(echo2<string>('Hello'))
 
 // Generic Class
 class MyMap<T> {
-  private map: {[key: string]: T} = {}
+  private map: { [key: string]: T } = {}
 
   setItem(key: string, item: T) {
     this.map[key] = item
@@ -340,4 +330,19 @@ class MyMap<T> {
     }
   }
 }
+```
+
+## Decorators
+
+```typescript
+function printable(constructorFn: Function) {
+  constructorFn.prototype.print = () => console.log(this)
+}
+
+@printable
+class Plant {
+  name = 'Green Plant'
+}
+
+const plant = new Plant()(<any>plant).print()
 ```
