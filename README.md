@@ -1,26 +1,39 @@
 # TypeScript Manual
 
 ## Table of Contens
-  - [Basic Types](#basic-types)
-  - [Classes](#classes)
-  - Interfaces
-  - Generics
-  - Type Inference
-  - Type Compatibility
-  - Advanced Types
-  - Symbols
-  - Iterators and Generatorss
-  - Modules
-  - Namespaces
-  - Namespaces and Modules
-  - Module resolution
-  - Declaration Merging
-  - JSX
-  - Decorators
-  - Mixins
-  - Triple-Slash Directives
+
+- [Setup]#setup
+- [Basic Types](#basic-types)
+- [Classes](#classes)
+- Interfaces
+- Generics
+- Type Inference
+- Type Compatibility
+- Advanced Types
+- Symbols
+- Iterators and Generatorss
+- Modules
+- Namespaces
+- Namespaces and Modules
+- Module resolution
+- Declaration Merging
+- JSX
+- Decorators
+- Mixins
+- Triple-Slash Directives
+
+## Setup
+
+```
+$ sudo npm install -g typescript
+
+
+# genarate tsconfig.json
+$ tsc --init
+```
 
 ## Basic Types
+
 ```typescript
 // string
 let myName: string = 'Yo'
@@ -38,17 +51,17 @@ let myRealAge: number
 myRealAge = 35
 
 // array
-let hobbies: any[] = ["Cooking", "Sports"]
+let hobbies: any[] = ['Cooking', 'Sports']
 hobbies = [100]
 
 // tuples
-let address: [string, number] = ["Bangkok", 14]
+let address: [string, number] = ['Bangkok', 14]
 
 // enum
-enum Color{
-    Gray,
-    Green,
-    Blue
+enum Color {
+  Gray,
+  Green,
+  Blue
 }
 
 let myColor: Color = Color.Green
@@ -57,22 +70,22 @@ console.log(myColor)
 // any
 let car: any = 'BMW'
 console.log(car)
-car = {brand: 'BMW', series: 3}
+car = { brand: 'BMW', series: 3 }
 console.log(car)
 
 // function
 function returnMyName(): string {
-    return myName
+  return myName
 }
 
 // void
 function sayHello(): void {
-    console.log('Hello')
+  console.log('Hello')
 }
 
 // argument types
 function multiply(value1: number, value2: number): number {
-    return value1 * value2
+  return value1 * value2
 }
 
 // function types
@@ -80,26 +93,26 @@ let myMultiply: (a: number, b: number) => number
 myMultiply = multiply
 
 // objects
-let userData: { name: string, age: number} = {
-    name: 'Yo',
-    age: 35
+let userData: { name: string; age: number } = {
+  name: 'Yo',
+  age: 35
 }
 
 // complex object
-let complex: {data: number[], output: (all: boolean) => number[]} = {
-    data: [100, 3.99, 10],
-    output: function(all: boolean): number[] {
-        return this.data
-    }
+let complex: { data: number[]; output: (all: boolean) => number[] } = {
+  data: [100, 3.99, 10],
+  output: function(all: boolean): number[] {
+    return this.data
+  }
 }
 
 // type alias
-type Complex = {data: number[], output: (all: boolean) => number[]}
+type Complex = { data: number[]; output: (all: boolean) => number[] }
 let complex2: Complex = {
-    data: [100, 3.99, 10],
-    output: function(all: boolean): number[] {
-        return this.data
-    }
+  data: [100, 3.99, 10],
+  output: function(all: boolean): number[] {
+    return this.data
+  }
 }
 
 // union types
@@ -109,15 +122,15 @@ myRealRealAge = '35'
 // check types
 let finalValue = 'A string'
 if (typeof finalValue == 'string') {
-    console.log('Final value is a string')
+  console.log('Final value is a string')
 }
 if (typeof finalValue == 'number') {
-    console.log('Final value is a number')
+  console.log('Final value is a number')
 }
 
 // never
-function neverReturns():never {
-    throw new Error('An error!')
+function neverReturns(): never {
+  throw new Error('An error!')
 }
 
 // Nullable Types
@@ -128,25 +141,26 @@ canAlsoBeNull = null
 ```
 
 ## Classes
+
 ```typescript
 // class
 class Person {
-    name: string
-    private type: string
-    protected age: number = 27
+  name: string
+  private type: string
+  protected age: number = 27
 
-    constructor(name: string, public username: string) {
-        this.name = name
-    }
+  constructor(name: string, public username: string) {
+    this.name = name
+  }
 
-    printAge(){
-        console.log(this.age)
-    }
+  printAge() {
+    console.log(this.age)
+  }
 
-    setType(type: string){
-        this.type = type
-        console.log(this.type)
-    }
+  setType(type: string) {
+    this.type = type
+    console.log(this.type)
+  }
 }
 
 const person = new Person('Person', 'General')
@@ -156,29 +170,29 @@ person.setType('Cool guy')
 
 // Inheritance
 class Yo extends Person {
-    constructor(username: string){
-        super('Yo', username)
-        this.age = 35
-    }
+  constructor(username: string) {
+    super('Yo', username)
+    this.age = 35
+  }
 }
 const yo = new Yo('Yuttasak')
 console.log(yo.printAge())
 
 // Getters & Setters
 class Plant {
-    private _species: string = 'Default'
+  private _species: string = 'Default'
 
-    get species() {
-        return this._species
-    }
+  get species() {
+    return this._species
+  }
 
-    set species(value: string) {
-        if (value.length > 3) {
-            this._species = value
-        } else {
-            this._species = 'Default'
-        }
+  set species(value: string) {
+    if (value.length > 3) {
+      this._species = value
+    } else {
+      this._species = 'Default'
     }
+  }
 }
 
 let plant = new Plant()
@@ -190,10 +204,10 @@ console.log(plant.species)
 
 // Static Properties & Methods
 class Helpers {
-    static PI: number = 3.14
-    static calcCircumference(diameter: number) : number {
-        return this.PI * diameter
-    }
+  static PI: number = 3.14
+  static calcCircumference(diameter: number): number {
+    return this.PI * diameter
+  }
 }
 
 console.log(2 * Helpers.PI)
@@ -201,20 +215,20 @@ console.log(Helpers.calcCircumference(2))
 
 // Abstract Classes
 abstract class Project {
-    projectName: string = 'Default'
-    budget: number = 1000
+  projectName: string = 'Default'
+  budget: number = 1000
 
-    abstract changeName(name: string): void
+  abstract changeName(name: string): void
 
-    calcBudget(){
-        return this.budget * 2
-    }
+  calcBudget() {
+    return this.budget * 2
+  }
 }
 
 class ITProject extends Project {
-    changeName(name: string){
-        this.projectName = name
-    }
+  changeName(name: string) {
+    this.projectName = name
+  }
 }
 
 let newProject = new ITProject()
@@ -224,16 +238,16 @@ console.log(newProject)
 
 // Private constructors
 class OnlyOne {
-    private static instance: OnlyOne
-    
-    private constructor(public readonly name: string) {}
+  private static instance: OnlyOne
 
-    static getInstance() {
-        if (!OnlyOne.instance) {
-            OnlyOne.instance = new OnlyOne('The Only One')
-        }
-        return OnlyOne.instance
+  private constructor(public readonly name: string) {}
+
+  static getInstance() {
+    if (!OnlyOne.instance) {
+      OnlyOne.instance = new OnlyOne('The Only One')
     }
+    return OnlyOne.instance
+  }
 }
 // let wrong = new OnlyOne('The Only One')
 let right = OnlyOne.getInstance()
